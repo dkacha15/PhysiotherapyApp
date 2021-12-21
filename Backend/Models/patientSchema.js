@@ -6,7 +6,7 @@ const patientSchema = new mongoose.Schema({
   email: { type: String },
   password: { type: String },
   address: { type: String },
-  DOB: { type: Date },
+  dob: { type: Date },
 });
 
 module.exports = mongoose.model("Patient", patientSchema);
