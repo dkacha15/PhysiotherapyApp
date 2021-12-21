@@ -6,7 +6,7 @@ const { MONGODB_URL } = require("./Config/keys");
 const app = express();
 const PORT = 5000;
 
-const auth = require("./Routes/authPatientRoutes");
+const auth = require("./Routes/authRoutes");
 const service = require("./Routes/serviceRoutes");
 
 app.use(bodyParser.json());
