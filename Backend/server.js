@@ -1,19 +1,26 @@
-const express=require("express");
-const bodyParser=require("body-parser");
-const mongoose=require("mongoose");
-const {MONGODB_URL}=require("./Config/keys");
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const { MONGODB_URL } = require("./Config/keys");
 
-const app=express();
-const PORT=5000;
+const app = express();
+const PORT = 5000;
+
+const auth = require("./routes/authPatientRoutes");
 
 app.use(bodyParser.json());
 
-mongoose.connect(MONGODB_URL).then(()=>{
-    console.log("Database Connected");
-}).catch(()=>{
-    console.log("Connection Failed");
-})
+app.use("/api/Physiotherapy", auth);
 
-app.listen(PORT,()=>{
-    console.log("Server is running on port:"+PORT);
-})
+mongoose
+  .connect(MONGODB_URL)
+  .then(() => {
+    console.log("Database Connected");
+  })
+  .catch(() => {
+    console.log("Connection Failed");
+  });
+
+app.listen(PORT, () => {
+  console.log("Server is running on port:" + PORT);
+});
