@@ -6,11 +6,13 @@ const { MONGODB_URL } = require("./Config/keys");
 const app = express();
 const PORT = 5000;
 
-const auth = require("./routes/authPatientRoutes");
+const auth = require("./Routes/authPatientRoutes");
+const service = require("./Routes/serviceRoutes");
 
 app.use(bodyParser.json());
 
 app.use("/api/Physiotherapy", auth);
+app.use("/api/Physiotherapy", service);
 
 mongoose
   .connect(MONGODB_URL)
