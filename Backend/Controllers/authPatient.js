@@ -29,7 +29,8 @@ module.exports = {
               // const token = jwt.sign({ _id: patient._id }, JWT_SECRET, {
               //   expiresIn: "24h",
               // });
-              return res.json({ patient: patient });  //comment this and call login function here
+              // return res.json({ patient: patient });  //comment this and call login function here
+              module.exports.loginPatient(req, res);
             });
         }).catch((err) => {
           console.log(err);
