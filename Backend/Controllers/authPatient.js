@@ -13,26 +13,25 @@ module.exports = {
     await Patient.findOne({
       email: email,
     }).then((patient) => {
-        if(patient){
-            return res.json({ error: "email already used" });
-        }
-        bcrypt.hash(password, 6).then((hasedPassword) => {
-            const patient = new Patient({
-              name,
-              mobile,
-              email,
-              password: hasedPassword,
-              address,
-              dob,
-            });
-            patient.save().then(() => {
-              // const token = jwt.sign({ _id: patient._id }, JWT_SECRET, {
-              //   expiresIn: "24h",
-              // });
-              return res.json({ patient: patient });  //comment this and call login function here
-            });
-          });
+      if (patient) {
+        return res.json({ error: "email already used" });
+      }
+      bcrypt.hash(password, 6).then((hasedPassword) => {
+        const patient = new Patient({
+          name,
+          mobile,
+          email,
+          password: hasedPassword,
+          address,
+          dob,
+        });
+        patient.save().then(() => {
+          // const token = jwt.sign({ _id: patient._id }, JWT_SECRET, {
+          //   expiresIn: "24h",
+          // });
+          return res.json({ patient: patient }); //comment this and call login function here
+        });
+      });
     });
-    
   },
 };
