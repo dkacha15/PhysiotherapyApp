@@ -13,12 +13,20 @@ module.exports = {
       doctor_id,
     });
     service.save().then(() => {
-      return res.json({ message: "service created" });
+      return res.json({ message: "Service created" });
     });
   },
 
   async getServices(req,res){
     const services = await Service.find();
         return res.json(services);
+  },
+
+  async getServiceById(req, res) {
+    const { service_id } = req.body;
+
+    await Service.findById(service_id).populate("doctors.doctor_id", "name").then((service) => {
+      return res.json(service);
+    })
   }
 };
