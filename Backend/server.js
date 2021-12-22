@@ -8,11 +8,13 @@ const PORT = 5000;
 
 const auth = require("./Routes/authRoutes");
 const service = require("./Routes/serviceRoutes");
+const product = require("./Routes/productRoutes");
 
 app.use(bodyParser.json());
 
 app.use("/api/Physiotherapy", auth);
 app.use("/api/Physiotherapy", service);
+app.use("/api/Physiotherapy", product);
 
 mongoose
   .connect(MONGODB_URL)
