@@ -3,50 +3,27 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   headerBox: {
     flex: 1,
-    padding: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
     flexDirection: "row",
     display: "flex",
   },
-  logo: {
-    flex: 0.4,
-    alignSelf: "flex-start",
-    // alignContent: "flex-start",
+
+  icon: {
+    flex: 0.2,
+    alignSelf: "center",
   },
   links: {
-    flex: 0.6,
+    flex: 0.8,
+    margin: 10,
     alignSelf: "flex-end",
-    alignContent: "flex-end",
-    alignItems: "flex-end",
+    flexDirection: "row",
+    display: "flex",
+    justifyItems: "center",
   },
-  homeBtn: {
-    fontFamily: "Times New Roman",
-    fontStyle: "bold",
-    fontSize: 18,
+  headerBtn: {
+    flex: 0.25,
   },
-  aboutUsBtn: {
-    fontFamily: "Times New Roman",
-    fontStyle: "bold",
-    fontSize: 18,
-  },
-  servicesBtn: {
-    fontFamily: "Times New Roman",
-    fontStyle: "bold",
-    fontSize: 18,
-  },
-  productsBtn: {
-    fontFamily: "Times New Roman",
-    fontStyle: "bold",
-    fontSize: 18,
-  },
-  /* .home-btn {
-        /* font-family: "Times New Roman", Times, serif; */
-  /* font-style: "bold"; */
-  //   font-size: 100px;
-  // }
-  // .header-box {
-  //   flex: 1;
-  //   padding: 20px;
-  // }
 }));
 
 export { useStyles };
