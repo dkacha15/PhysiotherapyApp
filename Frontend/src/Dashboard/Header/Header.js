@@ -1,6 +1,6 @@
 import * as React from "react";
 import Box from "@material-ui/core/Box";
-import { Button, IconButton, Avatar, Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import { useStyles } from "./HeaderStyles.js";
 import logo from "../../assets/logo1.jpeg";
 
@@ -26,6 +26,7 @@ const Header = () => {
             height: 70,
             marginLeft: 85,
           }}
+          alt="logo"
           src={logo}
         />
         <Typography style={{ textAlign: "center" }}>
