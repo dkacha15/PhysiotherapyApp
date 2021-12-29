@@ -29,7 +29,7 @@ const Header = () => {
           alt="logo"
           src={logo}
         />
-        <Typography style={{ textAlign: "center" }}>
+        <Typography style={{ textAlign: "center", fontFamily: "Raleway" }}>
           Physiotherapy Center
         </Typography>
       </Box>
@@ -37,13 +37,25 @@ const Header = () => {
         {pages.map((page) =>
           page.type === "button" ? (
             <Button className={classes.headerBtn}>
-              <Typography variant="subtitle2" component="div">
+              <Typography
+                style={{
+                  fontFamily: "Raleway",
+                }}
+                variant="subtitle2"
+                component="div"
+              >
                 {page.name}
               </Typography>
             </Button>
           ) : (
             <Button className={classes.headerBtn}>
-              <Typography variant="subtitle2" component="div">
+              <Typography
+                style={{
+                  fontFamily: "Raleway",
+                }}
+                variant="subtitle2"
+                component="div"
+              >
                 {page.name}
               </Typography>
             </Button>
