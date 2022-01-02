@@ -20,29 +20,50 @@ const Footer = () => {
         <Typography className={classes.title}>Quick Links</Typography>
         <Box className={classes.outerflex}>
           <Box className={classes.innerflex2}>
-            <Link href="#" underline="always" className={classes.link}>
-              Home
-            </Link>
-            <Link href="#" underline="always" className={classes.link}>
-              About Us
-            </Link>
-            <Link href="#" underline="always" className={classes.link}>
-              Services
-            </Link>
-            <Link href="#" underline="always" className={classes.link}>
-              Products
-            </Link>
+            <Box className={classes.innerflex}>
+              <Icons.ChevronRight className={classes.icon} />
+              <Link href="#" underline="always" className={classes.link}>
+                Home
+              </Link>
+            </Box>
+            <Box className={classes.innerflex}>
+              <Icons.ChevronRight className={classes.icon} />
+              <Link href="#" underline="always" className={classes.link}>
+                About Us
+              </Link>
+            </Box>
+            <Box className={classes.innerflex}>
+              <Icons.ChevronRight className={classes.icon} />
+              <Link href="#" underline="always" className={classes.link}>
+                Services
+              </Link>
+            </Box>
+            <Box className={classes.innerflex}>
+              <Icons.ChevronRight className={classes.icon} />
+              <Link href="#" underline="always" className={classes.link}>
+                Products
+              </Link>
+            </Box>
           </Box>
           <Box className={classes.middleflex}>
-            <Link href="#" underline="always" className={classes.link}>
-              Team
-            </Link>
-            <Link href="#" underline="always" className={classes.link}>
-              FAQs
-            </Link>
-            <Link href="#" underline="always" className={classes.link}>
-              Contact Us
-            </Link>
+            <Box className={classes.innerflex}>
+              <Icons.ChevronRight className={classes.icon} />
+              <Link href="#" underline="always" className={classes.link}>
+                Team
+              </Link>
+            </Box>
+            <Box className={classes.innerflex}>
+              <Icons.ChevronRight className={classes.icon} />
+              <Link href="#" underline="always" className={classes.link}>
+                FAQs
+              </Link>
+            </Box>
+            <Box className={classes.innerflex}>
+              <Icons.ChevronRight className={classes.icon} />
+              <Link href="#" underline="always" className={classes.link}>
+                Contact Us
+              </Link>
+            </Box>
           </Box>
         </Box>
       </Box>

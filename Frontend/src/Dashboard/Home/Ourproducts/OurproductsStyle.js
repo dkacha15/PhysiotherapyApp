@@ -59,7 +59,15 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Rubik",
     color: "#212529",
     fontWeight: "bold",
+    alignSelf: "center",
   },
+  innerflex: {
+    flex: 1,
+    flexDirection: "row",
+    display: "flex",
+    marginTop: 10,
+  },
+  icon: { alignSelf: "center" },
 }));
 
 export { useStyles };

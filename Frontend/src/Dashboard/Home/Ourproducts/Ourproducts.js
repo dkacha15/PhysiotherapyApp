@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Box, Link, Typography, Grid } from "@material-ui/core";
 import { useStyles } from "./OurproductsStyle";
+import * as Icons from "@material-ui/icons";
+
 import ortho from "../../../assets/orthopro.jpeg";
 import stocking from "../../../assets/compstocking.jpeg";
 import braces from "../../../assets/braces.jpeg";
@@ -76,9 +78,12 @@ const Ourproducts = () => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Link href="#" underline="none" className={classes.link}>
-                  Read More
-                </Link>
+                <Box className={classes.innerflex}>
+                  <Link href="#" underline="none" className={classes.link}>
+                    Read More
+                  </Link>
+                  <Icons.ChevronRight className={classes.icon} />
+                </Box>
               </Grid>
             </Grid>
           );

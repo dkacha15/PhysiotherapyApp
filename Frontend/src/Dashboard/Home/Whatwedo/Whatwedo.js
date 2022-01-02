@@ -1,11 +1,13 @@
 import * as React from "react";
 import { Box, Link, Grid, Typography } from "@material-ui/core";
+import * as Icons from "@material-ui/icons";
+import { useStyles } from "./WhatwedoStyles.js";
+
 import phy from "../../../assets/physiologo.png";
 import massage from "../../../assets/massage.png";
 import orthotic from "../../../assets/orthotics.png";
 import chiro from "../../../assets/chiropractic.png";
 import mva from "../../../assets/MVA.png";
-import { useStyles } from "./WhatwedoStyles.js";
 
 //Get list of services from home
 const services = [
@@ -82,9 +84,12 @@ const Whatwedo = () => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Link href="#" underline="none" className={classes.link}>
-                  Read More
-                </Link>
+                <Box className={classes.innerflex}>
+                  <Link href="#" underline="none" className={classes.link}>
+                    Read More
+                  </Link>
+                  <Icons.ChevronRight className={classes.icon} />
+                </Box>
               </Grid>
             </Grid>
           );
