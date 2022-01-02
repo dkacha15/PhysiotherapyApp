@@ -27,7 +27,7 @@ const CustomComponent = (props) => {
                 <Box
                   component="img"
                   className={classes.image}
-                  src={item.photo}
+                  src={item.image_url}
                   alt="service"
                 />
               </Grid>

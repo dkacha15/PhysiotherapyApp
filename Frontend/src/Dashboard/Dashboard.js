@@ -1,14 +1,37 @@
-import React from "react";
+import * as React from "react";
 import { Box } from "@material-ui/core";
 import Header from "./Header/Header";
 import Home from "./Home/Home";
+
 const Dashboard = () => {
-  //get list of services and products
+  const [products, setProducts] = React.useState([]);
+  const [services, setServices] = React.useState([]);
+
+  React.useEffect(() => {
+    getAllProducts();
+    getAllServices();
+  }, []);
+
+  const getAllProducts = () => {
+    fetch("http://localhost:5000/api/Physiotherapy/getProducts", {
+      method: "Get",
+    }).then((res) => res.json()).then((data) => {
+      setProducts(data);
+    })
+  };
+
+  const getAllServices = () => {
+    fetch("http://localhost:5000/api/Physiotherapy/getServices", {
+      method: "Get",
+    }).then((res) => res.json()).then((data) => {
+      setServices(data);
+    })
+  }
+
   return (
     <Box>
       <Header />
-      {/* pass list of services in home */}
-      <Home />
+      <Home products={products} services={services}/>
     </Box>
   );
 };

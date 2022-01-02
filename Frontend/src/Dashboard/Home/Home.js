@@ -7,15 +7,16 @@ import Bathaniphy from "./Bathaniphy/Bathaniphy";
 import Ourproducts from "./Ourproducts/Ourproducts";
 import Scheduleappointment from "./Scheduleappointment/Scheduleappointment";
 import Footer from "./Footer/Footer";
-const Home = () => {
+
+const Home = (props) => {
   return (
     <Box>
       <Carousel />
       {/* pass list of services in Whatwedo */}
-      <Whatwedo />
+      <Whatwedo services={props.services}/>
       <Bathaniphy />
       {/* pass list of products in Ourproducts */}
-      <Ourproducts />
+      <Ourproducts products={props.products}/>
       <Scheduleappointment />
       <Footer />
     </Box>

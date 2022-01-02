@@ -2,14 +2,15 @@ const Service = require("../models/serviceSchema");
 
 module.exports = {
   async createService(req, res) {
-    const { name, information, doctor_id } = req.body;
+    const { name, information, doctor_id, image_url } = req.body;
 
-    if (!name || !information || !doctor_id) {
+    if (!name || !information || !image_url) {
       return res.json({ error: "Fill all the required fields" });
     }
     const service = new Service({
       name,
       information,
+      image_url,
       doctor_id,
     });
     service.save().then(() => {
