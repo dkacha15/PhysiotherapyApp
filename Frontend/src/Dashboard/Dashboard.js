@@ -30,7 +30,7 @@ const Dashboard = () => {
 
   return (
     <Box>
-      <Header />
+      <Header products={products} services={services}/>
       <Home products={products} services={services}/>
     </Box>
   );
