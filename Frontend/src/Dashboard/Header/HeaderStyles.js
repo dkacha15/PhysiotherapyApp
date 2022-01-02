@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 30,
     flexDirection: "row",
     display: "flex",
+    backgroundColor: "#ffffff",
   },
 
   icon: {

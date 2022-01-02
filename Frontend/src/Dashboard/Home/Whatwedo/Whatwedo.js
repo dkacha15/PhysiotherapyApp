@@ -44,19 +44,11 @@ const Whatwedo = () => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.component} sx={{ width: "100%", flex: 1 }}>
-      <Typography
-        component="h2"
-        style={{
-          fontSize: 30,
-          fontFamily: "Raleway",
-          fontWeight: "bold",
-          color: "#323232",
-          textAlign: "center",
-          paddingTop: 10,
-          paddingBottom: 10,
-        }}
-      >
+    <Box
+      className={classes.component}
+      sx={{ width: "100%", flex: 1, paddingTop: 30, paddingBottom: 30 }}
+    >
+      <Typography component="h2" className={classes.title}>
         What We Do
       </Typography>
       <Grid container alignContent="center" className={classes.mainGrid}>
@@ -80,31 +72,12 @@ const Whatwedo = () => {
                 />
               </Grid>
               <Grid item>
-                <Typography
-                  style={{
-                    fontFamily: "Raleway",
-                    fontWeight: "bold",
-                    fontSize: 18,
-                    color: "#323232",
-                    textAlign: "center",
-                    marginTop: 20,
-                    marginBottom: 20,
-                  }}
-                >
+                <Typography className={classes.servname}>
                   {service.name}
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography
-                  style={{
-                    fontFamily: "Raleway",
-                    fontWeight: "bold",
-                    fontSize: 15,
-                    color: "#888",
-                    textAlign: "center",
-                    marginBottom: 10,
-                  }}
-                >
+                <Typography className={classes.servinfo}>
                   {service.information}
                 </Typography>
               </Grid>

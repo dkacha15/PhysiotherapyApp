@@ -3,6 +3,7 @@ import { Box, Button } from "@material-ui/core";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { MobileStepper } from "@material-ui/core";
+import { useStyles } from "./CarouselStyles";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import img1 from "../../../assets/img5.jpeg";
@@ -30,6 +31,7 @@ const images = [
   },
 ];
 const Carousel = () => {
+  const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
   const handleNext = () => {
@@ -59,16 +61,7 @@ const Carousel = () => {
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
                 component="img"
-                style={{
-                  height: 500,
-                  display: "block",
-                  maxWidth: 1200,
-                  overflow: "hidden",
-                  width: "100%",
-                  padding: 120,
-                  paddingTop: 40,
-                  paddingBottom: 20,
-                }}
+                className={classes.image}
                 src={step.imgPath}
                 alt={step.label}
               />
@@ -81,7 +74,7 @@ const Carousel = () => {
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
-        style={{ backgroundColor: "#ffffff" }}
+        className={classes.stepper}
         sx={{ maxWidth: 400, flexGrow: 1 }}
         nextButton={
           <Button size="small" onClick={handleNext}>

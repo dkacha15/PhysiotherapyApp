@@ -1,7 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  component: { backgroundColor: "#f7f6f6" },
+  containerBox: {
+    backgroundColor: "#f7f6f6",
+    paddingTop: 30,
+    paddingBottom: 30,
+  },
   title: {
     fontSize: 30,
     fontFamily: "Raleway",
@@ -11,7 +15,25 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 10,
     paddingBottom: 10,
   },
-  servname: {
+  mainGrid: { paddingBottom: 10 },
+  container: {
+    marginLeft: 60,
+    marginRight: 60,
+    marginTop: 15,
+    marginBottom: 15,
+    paddingBottom: 25,
+    alignItems: "center",
+    alignContent: "center",
+    backgroundColor: "#ffffff",
+    borderRadius: 10,
+    width: "25%",
+  },
+  image: {
+    width: "100%",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  name: {
     fontFamily: "Raleway",
     fontWeight: "bold",
     fontSize: 18,
@@ -19,30 +41,18 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     marginTop: 20,
     marginBottom: 20,
+    paddingRight: 30,
+    paddingLeft: 30,
   },
-  servinfo: {
+  information: {
     fontFamily: "Raleway",
     fontWeight: "bold",
     fontSize: 15,
     color: "#888",
     textAlign: "center",
     marginBottom: 10,
-  },
-  mainGrid: { paddingBottom: 10 },
-  container: {
-    marginLeft: 60,
-    marginRight: 60,
-    marginTop: 15,
-    marginBottom: 15,
-    paddingLeft: 30,
     paddingRight: 30,
-    paddingTop: 25,
-    paddingBottom: 25,
-    alignItems: "center",
-    alignContent: "center",
-    backgroundColor: "#ffffff",
-    borderRadius: 10,
-    width: "25%",
+    paddingLeft: 30,
   },
   link: {
     fontSize: 16,

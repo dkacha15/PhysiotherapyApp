@@ -8,7 +8,7 @@ const Dashboard = () => {
     <Box>
       <Header />
       {/* pass list of services in home */}
-      <Home /> 
+      <Home />
     </Box>
   );
 };
