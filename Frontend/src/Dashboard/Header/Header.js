@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@material-ui/core/Box";
 import { Button, Typography } from "@material-ui/core";
 import { useStyles } from "./HeaderStyles.js";
-import logo from "../../assets/logo1.jpeg";
+import logo from "../../assets/companylogo.jpeg";
 
 const pages = [
   { name: "Home", type: "button" },
@@ -22,16 +22,17 @@ const Header = () => {
       <Box className={classes.icon}>
         <img
           style={{
-            width: 70,
-            height: 70,
+            width: 130,
+            height: 120,
             marginLeft: 85,
+            borderRadius: 10,
           }}
           alt="logo"
           src={logo}
         />
-        <Typography style={{ textAlign: "center", fontFamily: "Raleway" }}>
+        {/* <Typography style={{ textAlign: "center", fontFamily: "Raleway" }}>
           Physiotherapy Center
-        </Typography>
+        </Typography> */}
       </Box>
       <Box className={classes.links}>
         {pages.map((page) =>
