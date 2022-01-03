@@ -49,7 +49,13 @@ const Carousel = () => {
   };
 
   return (
-    <Box sx={{ width: "100%", flexGrow: 1 }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        width: "100%",
+        height: "20%",
+      }}
+    >
       <AutoPlaySwipeableViews
         axis="x"
         index={activeStep}
@@ -60,11 +66,28 @@ const Carousel = () => {
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
-                component="img"
-                className={classes.image}
-                src={step.imgPath}
-                alt={step.label}
-              />
+                style={{
+                  "@media (min-width:780px)": {
+                    width: "20%",
+                    heigth: 50,
+                  },
+                  overflow: "hidden",
+                  alignContent: "center",
+                  alignItems: "center",
+                  marginRight: "2%",
+                  marginLeft: "2%",
+                  marginTop: "3%",
+                  paddingLeft: "7%",
+                  paddingRight: "7%",
+                }}
+              >
+                <Box
+                  component="img"
+                  className={classes.image}
+                  src={step.imgPath}
+                  alt={step.label}
+                />
+              </Box>
             ) : null}
           </div>
         ))}

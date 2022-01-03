@@ -7,7 +7,7 @@ const CustomComponent = (props) => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.containerBox} sx={{ width: "100%", flex: 1 }}>
+    <Box className={classes.containerBox}>
       <Typography component="h2" className={classes.title}>
         {props.title}
       </Typography>
