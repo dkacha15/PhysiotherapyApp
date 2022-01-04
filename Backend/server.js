@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const { MONGODB_URL } = require("./Config/keys");
 
 const app = express();
@@ -11,6 +12,12 @@ const service = require("./Routes/serviceRoutes");
 const product = require("./Routes/productRoutes");
 
 app.use(bodyParser.json());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true
+  })
+);
 
 app.use("/api/Physiotherapy", auth);
 app.use("/api/Physiotherapy", service);
