@@ -4,9 +4,11 @@ const useStyles = makeStyles((theme) => ({
   containerBox: {
     flex: 1,
     backgroundColor: "#212529",
-    padding: 30,
+    paddingLeft: 30,
+    paddingTop: 30,
     flexDirection: "row",
     display: "flex",
+    flexWrap: "wrap",
   },
   title: {
     fontFamily: "Raleway",
@@ -25,10 +27,15 @@ const useStyles = makeStyles((theme) => ({
   flex1: {
     flex: 0.4,
     alignSelf: "flex-start",
+    marginBottom: 20,
+    marginRight: 20,
   },
   flex2: {
     flex: 0.2,
     alignSelf: "flex-start",
+    marginBottom: 20,
+    marginRight: 20,
+    // marginLeft: 10,
   },
   middleflex: { flexDirection: "column", display: "flex", flex: 0.5 },
   link: {
@@ -37,16 +44,24 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     color: "#ffffff",
   },
-  innerflex2: { flexDirection: "column", display: "flex", flex: 0.5 },
+
+  innerflex2: {
+    flexDirection: "column",
+    display: "flex",
+    flex: 0.5,
+  },
   outerflex: {
     flex: 1,
     flexDirection: "row",
     display: "flex",
     marginTop: 20,
+    flexWrap: "wrap",
   },
   flex3: {
     flex: 0.4,
     alignSelf: "flex-start",
+    marginBottom: 20,
+    marginRight: 20,
   },
   innerflex: {
     flex: 1,

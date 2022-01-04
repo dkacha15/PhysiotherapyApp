@@ -7,9 +7,12 @@ const Bathaniphy = () => {
   const classes = useStyles();
   return (
     <Box className={classes.container}>
+      <Box className={classes.flexBox}>
+        <Box component="img" src={image} alt="team photo" />
+      </Box>
       <Box className={classes.contentBox}>
         <Typography className={classes.title}>
-          Welcome to Bathani Physiotherapy Clinic
+          Welcome to Bathani Physiotherapy
         </Typography>
         <Typography className={classes.content}>
           Bathani Physiotherapy is a dynamic multidisciplinary clinic that
@@ -31,9 +34,6 @@ const Bathaniphy = () => {
         <Button variant="contained" className={classes.btn}>
           Learn More
         </Button>
-      </Box>
-      <Box className={classes.flexBox}>
-        <Box component="img" src={image} alt="team photo" style={{ flex: 1 }} />
       </Box>
     </Box>
   );

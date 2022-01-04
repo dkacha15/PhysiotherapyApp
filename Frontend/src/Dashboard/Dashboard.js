@@ -40,7 +40,7 @@ const Dashboard = () => {
   };
 
   return (
-    <Box>
+    <Box style={{ flex: 1, width: "100%" }}>
       <Header
         products={products}
         services={services}
