@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -24,7 +25,7 @@ const Header = (props) => {
     { name: "Contact Us", type: "button" },
     { name: "Book an Appointment", type: "button" },
   ];
-
+  const navigate = useNavigate();
   const products = props.products;
   const services = props.services;
   const settings = ["Profile", "History", "Logout"];
@@ -57,8 +58,8 @@ const Header = (props) => {
     setAnchorElNav(null);
   };
 
-  const handleSelection = (name) => {
-    props.selected(name);
+  const handleSelection = (type,item, name) => {
+    navigate("/", { state: {type:type, item: item, name: name } });
     handleCloseMenu();
   };
 
@@ -103,7 +104,7 @@ const Header = (props) => {
                 page.type === "button" ? (
                   <MenuItem
                     key={page._id}
-                    onClick={() => handleSelection(page.name)}
+                    onClick={() => handleSelection("",[], page.name)}
                   >
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
@@ -131,7 +132,7 @@ const Header = (props) => {
                 {products.map((product) => (
                   <MenuItem
                     key={product._id}
-                    onClick={() => handleSelection(product.name)}
+                    onClick={() => handleSelection("Products",product, product.name)}
                   >
                     <Typography textAlign="center">{product.name}</Typography>
                   </MenuItem>
@@ -148,7 +149,10 @@ const Header = (props) => {
                 }}
               >
                 {services.map((service) => (
-                  <MenuItem key={service._id} onClick={handleCloseMenu}>
+                  <MenuItem
+                    key={service._id}
+                    onClick={() => handleSelection("Services",service, service.name)}
+                  >
                     <Typography textAlign="center">{service.name}</Typography>
                   </MenuItem>
                 ))}

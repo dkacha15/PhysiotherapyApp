@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Box } from "@material-ui/core";
 import Header from "./Header/Header";
 import Home from "./Home/Home";
@@ -6,15 +8,30 @@ import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
 import Aboutus from "./AboutUs/Aboutus";
 
-const Dashboard = () => {
-  const [products, setProducts] = React.useState([]);
-  const [services, setServices] = React.useState([]);
-  const [page, setPage] = React.useState("About Us");
+const Dashboard = (props) => {
+  const [products, setProducts] = useState([]);
+  const [services, setServices] = useState([]);
+  const [service, setService] = useState([]);
+  const [product, setProduct] = useState([]);
 
-  React.useEffect(() => {
+  const { state } = useLocation();
+  const [page, setPage] = useState(state.name ? state.name : "Home");
+  useEffect(() => {
     getAllProducts();
     getAllServices();
   }, []);
+  useEffect(() => {
+    if (state.type === "Products") {
+      setPage("Products");
+      setProduct(state.item);
+    } else if (state.type === "Services") {
+      setPage("Services");
+      setService(state.item);
+    } else {
+      setPage(state.name);
+    }
+    console.log(state);
+  }, [state.name]);
 
   const getAllProducts = () => {
     fetch("http://localhost:5000/api/Physiotherapy/getProducts", {
@@ -35,17 +52,10 @@ const Dashboard = () => {
         setServices(data);
       });
   };
-  const handleSelected = (props) => {
-    setPage(props);
-  };
 
   return (
     <Box style={{ flex: 1, width: "100%" }}>
-      <Header
-        products={products}
-        services={services}
-        selected={handleSelected}
-      />
+      <Header products={products} services={services} />
       {page === "Home" && <Home products={products} services={services} />}
       {page === "About Us" && <Aboutus />}
       <Footer />
