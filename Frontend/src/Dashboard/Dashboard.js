@@ -9,7 +9,7 @@ import Aboutus from "./AboutUs/Aboutus";
 const Dashboard = () => {
   const [products, setProducts] = React.useState([]);
   const [services, setServices] = React.useState([]);
-  const [page, setPage] = React.useState("Home");
+  const [page, setPage] = React.useState("About Us");
 
   React.useEffect(() => {
     getAllProducts();
