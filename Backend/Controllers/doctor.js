@@ -2,11 +2,20 @@ const Doctor = require("../Models/doctorSchema");
 
 module.exports = {
 
+  async getDoctors(req, res) {
+    const doctors = await Doctor.find({}, {
+      name:1,
+    });
+    return res.json(doctors);
+  },
+
   async getDoctorById(req, res) {
     const { doctor_id } = req.body;
-    const doctor = await Doctor.findById(doctor_id);
-    
-    return res.json(doctor);
+    await Doctor.findById(doctor_id).then((result) => {
+      return res.json(result);
+    }).catch((err) => {
+      console.log(err);
+    })
   },
 
   async addAppointment(req, res) {
