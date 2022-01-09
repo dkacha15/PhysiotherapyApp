@@ -58,8 +58,12 @@ const Header = (props) => {
     setAnchorElNav(null);
   };
 
-  const handleSelection = (type,item, name) => {
-    navigate("/", { state: {type:type, item: item, name: name } });
+  const handleSelection = (type, item, name) => {
+    if (name === "Book an Appointment") {
+      navigate("/bookAppointment");
+    } else {
+      navigate("/", { state: { type: type, item: item, name: name } });
+    }
     handleCloseMenu();
   };
 
@@ -104,7 +108,7 @@ const Header = (props) => {
                 page.type === "button" ? (
                   <MenuItem
                     key={page._id}
-                    onClick={() => handleSelection("",[], page.name)}
+                    onClick={() => handleSelection("", [], page.name)}
                   >
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
@@ -132,7 +136,9 @@ const Header = (props) => {
                 {products.map((product) => (
                   <MenuItem
                     key={product._id}
-                    onClick={() => handleSelection("Products",product, product.name)}
+                    onClick={() =>
+                      handleSelection("Products", product, product.name)
+                    }
                   >
                     <Typography textAlign="center">{product.name}</Typography>
                   </MenuItem>
@@ -151,7 +157,9 @@ const Header = (props) => {
                 {services.map((service) => (
                   <MenuItem
                     key={service._id}
-                    onClick={() => handleSelection("Services",service, service.name)}
+                    onClick={() =>
+                      handleSelection("Services", service, service.name)
+                    }
                   >
                     <Typography textAlign="center">{service.name}</Typography>
                   </MenuItem>
@@ -168,7 +176,7 @@ const Header = (props) => {
                   <Button
                     key={page.name}
                     sx={{ my: 2, color: "white", display: "block" }}
-                    onClick={() => handleSelection(page.name)}
+                    onClick={() => handleSelection("", [], page.name)}
                   >
                     {page.name}
                   </Button>
