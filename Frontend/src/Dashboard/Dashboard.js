@@ -7,6 +7,7 @@ import Home from "./Home/Home";
 
 import Footer from "./Footer/Footer";
 import Aboutus from "./AboutUs/Aboutus";
+import Service from "./Services/Service";
 
 const Dashboard = (props) => {
   const [products, setProducts] = useState([]);
@@ -14,26 +15,27 @@ const Dashboard = (props) => {
   const [service, setService] = useState([]);
   const [product, setProduct] = useState([]);
 
-  // const {state} = useLocation();
-  // const [page, setPage] = useState(state.name ? state.name : "Home");
+  const { state } = useLocation();
+  const [page, setPage] = useState(state ? state.name : "Home");
 
   useEffect(() => {
     getAllProducts();
     getAllServices();
   }, []);
 
-  // useEffect(() => {
-  //   if (state.type === "Products") {
-  //     setPage("Products");
-  //     setProduct(state.item);
-  //   } else if (state.type === "Services") {
-  //     setPage("Services");
-  //     setService(state.item);
-  //   } else {
-  //     setPage(state.name);
-  //   }
-  //   console.log(state);
-  // }, [state.name]);
+  useEffect(() => {
+    if (state) {
+      if (state.type === "Products") {
+        setPage("Products");
+        setProduct(state.item);
+      } else if (state.type === "Services") {
+        setPage("Services");
+        setService(state.item);
+      } else {
+        setPage(state.name);
+      }
+    }
+  }, [state]);
 
   const getAllProducts = () => {
     fetch("http://localhost:5000/api/Physiotherapy/getProducts", {
@@ -58,10 +60,11 @@ const Dashboard = (props) => {
   return (
     <Box style={{ flex: 1, width: "100%" }}>
       <Header products={products} services={services} />
-      {/* {page === "Home" && <Home products={products} services={services} />}
-      {page === "About Us" && <Aboutus />} */}
-      <Home products={products} services={services} />
-      <Aboutus />
+      {page === "Home" && <Home products={products} services={services} />}
+      {page === "About Us" && <Aboutus />}
+      {page === "Services" && <Service service={service} />}
+      {/* <Home products={products} services={services} /> */}
+      {/* <Aboutus /> */}
       <Footer />
     </Box>
   );
