@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Typography, Link } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import image from "../../assets/phy.png";
 import { useStyles } from "./AboutusStyles";
 
