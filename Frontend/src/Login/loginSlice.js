@@ -1,23 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  authenticated: false,
+  authenticated: localStorage.getItem('authenticated'),
 }
 
-export const dashboardSlice = createSlice({
-  name: 'counter',
+export const loginSlice = createSlice({
+  name: 'login',
   initialState,
   reducers: {
     login: (state) => {
       state.authenticated = true;
     },
    
-    incrementByAmount: (state, action) => {
-      state.value += action.payload
+    logout: (state) => {
+      localStorage.setItem('authenticated',false)
+      state.authenticated = false;
     },
   },
 })
 
-export const { increment, decrement, incrementByAmount } = dashboardSlice.actions
+export const { login, logout } = loginSlice.actions
 
-export default dashboardSlice.reducer
+export default loginSlice.reducer

@@ -5,7 +5,7 @@ import SignUp from "./Sign Up/SignUp";
 import Login from "./Login/Login";
 import DoctorAppointment from "./Appointment Booking/DoctorAppointment";
 import BookAppointment from "./Appointment Booking/BookAppointment";
-
+  
 const Routing = () => {
   return (
     <BrowserRouter>

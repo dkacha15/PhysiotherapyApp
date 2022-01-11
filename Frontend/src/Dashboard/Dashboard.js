@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Box } from "@material-ui/core";
 import Header from "./Header/Header";
 import Home from "./Home/Home";
+// import { useSelector, useDispatch } from "react-redux";
 
 import Footer from "./Footer/Footer";
 import Aboutus from "./AboutUs/Aboutus";
@@ -63,8 +64,6 @@ const Dashboard = (props) => {
       {page === "Home" && <Home products={products} services={services} />}
       {page === "About Us" && <Aboutus />}
       {page === "Services" && <Service service={service} />}
-      {/* <Home products={products} services={services} /> */}
-      {/* <Aboutus /> */}
       <Footer />
     </Box>
   );

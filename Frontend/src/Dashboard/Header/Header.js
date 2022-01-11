@@ -13,18 +13,22 @@ import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
 import MenuItem from "@material-ui/core/MenuItem";
 import logo from "../../assets/logo.jpeg";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../Login/loginSlice";
 
 const Header = (props) => {
+  const auth = useSelector((state) => state.login.authenticated);
+  const dispatch = useDispatch();
   const pages = [
     { name: "Home", type: "button" },
     { name: "About Us", type: "button" },
     { name: "Services", type: "menu" },
     { name: "Products", type: "menu" },
     { name: "Team", type: "button" },
-    { name: "FAQs", type: "button" },
     { name: "Contact Us", type: "button" },
-    { name: "Book an Appointment", type: "button" },
+    { name: auth ? "Book an Appointment" : "Sign Up", type: "button" },
   ];
+
   const navigate = useNavigate();
   const products = props.products;
   const services = props.services;
@@ -58,12 +62,31 @@ const Header = (props) => {
     setAnchorElNav(null);
   };
 
-  const handleSelection = (type, item, name) => {
+  const handlePageSelection = (name) => {
     if (name === "Book an Appointment") {
       navigate("/bookAppointment");
+    } else if (name === "Sign Up") {
+      navigate("/login");
     } else {
-      navigate("/", { state: { type: type, item: item, name: name } });
+      navigate("/", { state: { name: name } });
     }
+    handleCloseMenu();
+  };
+
+  const handleSettingSelection = (name) => {
+    if (name === "Logout") {
+      dispatch(logout());
+    }
+    handleCloseMenu();
+  };
+
+  const handleServiceSelection = (item, name) => {
+    navigate("/", { state: { type: "Services", item: item, name: name } });
+    handleCloseMenu();
+  };
+
+  const handleProductSelection = (item, name) => {
+    navigate("/", { state: { type: "Products", item: item, name: name } });
     handleCloseMenu();
   };
 
@@ -108,7 +131,7 @@ const Header = (props) => {
                 page.type === "button" ? (
                   <MenuItem
                     key={page._id}
-                    onClick={() => handleSelection("", [], page.name)}
+                    onClick={() => handlePageSelection(page.name)}
                   >
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
@@ -137,7 +160,7 @@ const Header = (props) => {
                   <MenuItem
                     key={product._id}
                     onClick={() =>
-                      handleSelection("Products", product, product.name)
+                      handleProductSelection(product, product.name)
                     }
                   >
                     <Typography textAlign="center">{product.name}</Typography>
@@ -158,7 +181,7 @@ const Header = (props) => {
                   <MenuItem
                     key={service._id}
                     onClick={() =>
-                      handleSelection("Services", service, service.name)
+                      handleServiceSelection(service, service.name)
                     }
                   >
                     <Typography textAlign="center">{service.name}</Typography>
@@ -176,7 +199,7 @@ const Header = (props) => {
                   <Button
                     key={page.name}
                     sx={{ my: 2, color: "white", display: "block" }}
-                    onClick={() => handleSelection("", [], page.name)}
+                    onClick={() => handlePageSelection(page.name)}
                   >
                     {page.name}
                   </Button>
@@ -205,7 +228,10 @@ const Header = (props) => {
               }}
             >
               {products.map((product) => (
-                <MenuItem key={product._id} onClick={handleCloseMenu}>
+                <MenuItem
+                  key={product._id}
+                  onClick={() => handleProductSelection(product, product.name)}
+                >
                   <Typography textAlign="center">{product.name}</Typography>
                 </MenuItem>
               ))}
@@ -221,7 +247,10 @@ const Header = (props) => {
               }}
             >
               {services.map((service) => (
-                <MenuItem key={service._id} onClick={handleCloseMenu}>
+                <MenuItem
+                  key={service._id}
+                  onClick={() => handleServiceSelection(service, service.name)}
+                >
                   <Typography textAlign="center">{service.name}</Typography>
                 </MenuItem>
               ))}
@@ -229,34 +258,39 @@ const Header = (props) => {
           </Box>
 
           {/* Account settings */}
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton
-                onClick={handleOpenMenu}
-                sx={{ p: 0 }}
-                aria-controls="userMenu"
+          {auth && (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton
+                  onClick={handleOpenMenu}
+                  sx={{ p: 0 }}
+                  aria-controls="userMenu"
+                >
+                  <Avatar
+                    alt="Remy Sharp"
+                    src="http://cdn.onlinewebfonts.com/svg/img_243887.png"
+                  />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="userMenu"
+                anchorEl={anchorElUser}
+                keepMounted
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseMenu}
               >
-                <Avatar
-                  alt="Remy Sharp"
-                  src="http://cdn.onlinewebfonts.com/svg/img_243887.png"
-                />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="userMenu"
-              anchorEl={anchorElUser}
-              keepMounted
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+                {settings.map((setting) => (
+                  <MenuItem
+                    key={setting}
+                    onClick={() => handleSettingSelection(setting)}
+                  >
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
@@ -264,74 +298,3 @@ const Header = (props) => {
 };
 
 export default Header;
-
-// import * as React from "react";
-// import Box from "@material-ui/core/Box";
-// import { Button, Typography } from "@material-ui/core";
-// import { useStyles } from "./HeaderStyles.js";
-// import logo from "../../assets/companylogo.jpeg";
-
-// const pages = [
-//   { name: "Home", type: "button" },
-//   { name: "About Us", type: "button" },
-//   { name: "Services", type: "menu" },
-//   { name: "Products", type: "menu" },
-//   { name: "Team", type: "button" },
-//   { name: "FAQs", type: "button" },
-//   { name: "Contact Us", type: "button" },
-//   { name: "Book an Appointment", type: "button" },
-// ];
-// const Header = () => {
-//   const classes = useStyles();
-
-//   return (
-//     <Box className={classes.headerBox}>
-//       <Box className={classes.icon}>
-//         <img
-//           style={{
-//             width: 130,
-//             height: 120,
-//             marginLeft: 85,
-//             borderRadius: 10,
-//           }}
-//           alt="logo"
-//           src={logo}
-//         />
-//         {/* <Typography style={{ textAlign: "center", fontFamily: "Raleway" }}>
-//           Physiotherapy Center
-//         </Typography> */}
-//       </Box>
-//       <Box className={classes.links}>
-//         {pages.map((page) =>
-//           page.type === "button" ? (
-//             <Button className={classes.headerBtn}>
-//               <Typography
-//                 style={{
-//                   fontFamily: "Raleway",
-//                 }}
-//                 variant="subtitle2"
-//                 component="div"
-//               >
-//                 {page.name}
-//               </Typography>
-//             </Button>
-//           ) : (
-//             <Button className={classes.headerBtn}>
-//               <Typography
-//                 style={{
-//                   fontFamily: "Raleway",
-//                 }}
-//                 variant="subtitle2"
-//                 component="div"
-//               >
-//                 {page.name}
-//               </Typography>
-//             </Button>
-//           )
-//         )}
-//       </Box>
-//     </Box>
-//   );
-// };
-
-// export default Header;
