@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import { Box } from "@material-ui/core";
+import { Box,Typography } from "@material-ui/core";
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -15,17 +15,11 @@ import { useStyles } from "./BookAppointmentStyles";
 
 const DoctorAppointment = () => {
 
-    var date1 = new Date();
-    var date2 = new Date();
-    var date3 = new Date();
-    date3.setDate(date1.getDate() + 11);
-    date3.setHours(14, 30, 0);
-    date1.setHours(9, 0, 0);
-    date2.setHours(11, 0, 0);
     const classes = useStyles();
     const calendarRef = React.createRef();
     let eventId = 0;
-    const { doctor_id } = useParams();
+    const { doctor_id, service_id } = useParams();
+    const [serviceName, setServiceName] = React.useState();
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [open, setOpen] = React.useState(false);
     const [minTime, setMinTime] = React.useState("00:00");
@@ -66,6 +60,19 @@ const DoctorAppointment = () => {
     ]);
 
     React.useEffect(() => {
+        fetch("http://localhost:5000/api/Physiotherapy/getServiceById", {
+            method: "Post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                service_id
+            }),
+        }).then((res) => res.json())
+            .then((data) => {
+                setServiceName(data.name);
+            });
+        
         fetch("http://localhost:5000/api/Physiotherapy/getDoctor", {
             method: "Post",
             headers: {
@@ -77,13 +84,13 @@ const DoctorAppointment = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                (data.appointments).forEach((item) => {
-                    setbookedAppointments(oldArray => [...oldArray, moment(item)._d]);
-                })
-                setDoctorName(data.name);
-                setSchedule(data.schedule);
+                (data.appointment).forEach((item) => {
+                    setbookedAppointments(oldArray => [...oldArray, moment(item.date)._d]);
+                });
+                setDoctorName(data.result.name);
+                setSchedule(data.result.schedule);
             });
-    },[]);
+    }, []);
 
     React.useEffect(() => {
         setCalendarTimeRange();
@@ -280,7 +287,8 @@ const DoctorAppointment = () => {
             },
             body: JSON.stringify({
                 doctor_id,
-                appointmentDate:date
+                date,
+                service_id
             }),
         })
             .then((res) => res.json())
@@ -297,6 +305,9 @@ const DoctorAppointment = () => {
     return (
         <Box className={classes.box1}>
             <Box className={classes.box2}>
+                <Typography align='center' variant='h4'>
+                    {serviceName}
+                </Typography>
                 <FullCalendar
                     ref={calendarRef}
                     plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}

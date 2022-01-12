@@ -9,7 +9,6 @@ const doctorSchema = new mongoose.Schema({
         day: { type: String },
         timeRange: { type: String }
     }],
-    appointments: []
 });
 
 module.exports=mongoose.model("Doctor",doctorSchema);
