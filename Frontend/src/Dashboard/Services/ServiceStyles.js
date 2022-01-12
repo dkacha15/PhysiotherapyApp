@@ -40,6 +40,26 @@ const useStyles = makeStyles((theme) => ({
     color: "#888888",
     marginBottom: 20,
   },
+  image: {
+    width: 320,
+    height: 270,
+    borderRadius: 10,
+  },
+  infoBox: {
+    flex: 1,
+    flexDirection: "row",
+    display: "flex",
+  },
+  points: {
+    alignSelf: "flex-end",
+    fontFamily: "Raleway",
+    fontSize: 18,
+    color: "#888888",
+  },
+  icon: {
+    alignSelf: "center",
+    color: "#888888",
+  },
   flex2: {
     flex: 0.5,
     flexDirection: "row",
