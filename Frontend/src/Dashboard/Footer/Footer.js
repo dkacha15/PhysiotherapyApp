@@ -77,7 +77,9 @@ const Footer = () => {
         </Box>
         <Box className={classes.innerflex}>
           <Icons.Call className={classes.icon} />
-          <Typography className={classes.flex3content}>437-981-0060</Typography>
+          <Link href="tel:437-981-0060" className={classes.flex3content}>
+            437-981-0060
+          </Link>
         </Box>
         <Box className={classes.innerflex}>
           <Icons.Mail className={classes.icon} />

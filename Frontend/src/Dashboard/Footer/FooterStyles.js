@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "flex-start",
     marginBottom: 20,
     marginRight: 20,
-    // marginLeft: 10,
   },
   middleflex: { flexDirection: "column", display: "flex", flex: 0.5 },
   link: {
