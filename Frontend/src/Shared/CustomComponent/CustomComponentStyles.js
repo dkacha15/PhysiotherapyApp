@@ -26,10 +26,8 @@ const useStyles = makeStyles((theme) => ({
     alignContent: "center",
     backgroundColor: "#ffffff",
     borderRadius: 10,
-    // minWidth: "25%",
     minWidth: "25%",
     "@media (min-width:780px)": {
-      // eslint-disable-line no-useless-computed-key
       width: "25%",
     },
   },

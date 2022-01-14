@@ -9,6 +9,7 @@ import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
 import Aboutus from "./AboutUs/Aboutus";
 import Service from "./Services/Service";
+import Product from "./Products/Product";
 
 const Dashboard = (props) => {
   const [products, setProducts] = useState([]);
@@ -64,6 +65,7 @@ const Dashboard = (props) => {
       {page === "Home" && <Home products={products} services={services} />}
       {page === "About Us" && <Aboutus />}
       {page === "Services" && <Service service={service} />}
+      {page === "Products" && <Product product={product} />}
       <Footer />
     </Box>
   );
