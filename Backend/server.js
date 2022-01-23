@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const { MONGODB_URL } = require("./Config/keys");
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(
     credentials: true
   })
 );
+app.use(cookieParser());
 
 app.use("/api/Physiotherapy", auth);
 app.use("/api/Physiotherapy", service);

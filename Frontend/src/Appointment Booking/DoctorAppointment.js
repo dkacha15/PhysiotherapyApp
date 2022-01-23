@@ -62,6 +62,7 @@ const DoctorAppointment = () => {
     React.useEffect(() => {
         fetch("http://localhost:5000/api/Physiotherapy/getServiceById", {
             method: "Post",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -75,6 +76,7 @@ const DoctorAppointment = () => {
         
         fetch("http://localhost:5000/api/Physiotherapy/getDoctor", {
             method: "Post",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -282,6 +284,7 @@ const DoctorAppointment = () => {
     const bookAppointment = (date) => {
         fetch("http://localhost:5000/api/Physiotherapy/addAppointment", {
             method: "Post",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },

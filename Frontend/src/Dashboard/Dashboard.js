@@ -42,6 +42,7 @@ const Dashboard = (props) => {
   const getAllProducts = () => {
     fetch("http://localhost:5000/api/Physiotherapy/getProducts", {
       method: "Get",
+      credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => {
@@ -52,6 +53,7 @@ const Dashboard = (props) => {
   const getAllServices = () => {
     fetch("http://localhost:5000/api/Physiotherapy/getServices", {
       method: "Get",
+      credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => {

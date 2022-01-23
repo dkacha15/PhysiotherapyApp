@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Box, TextField, Button } from "@material-ui/core";
 import * as Icons from "@material-ui/icons";
 import { useStyles } from "./LoginStyles";
-import { useDispatch } from "react-redux";
-import { login } from "./loginSlice";
 
 const Login = () => {
   const classes = useStyles();
@@ -12,7 +10,6 @@ const Login = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [message, setMessage] = React.useState("");
-  const dispatch = useDispatch();
 
   const loginAPI = () => {
     fetch("http://localhost:5000/api/Physiotherapy/patientLogin", {
@@ -20,6 +17,7 @@ const Login = () => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         email,
         password,
@@ -30,9 +28,8 @@ const Login = () => {
         if (data.error) {
           setMessage(data.error);
         } else {
-          localStorage.setItem("authenticated", true);
-          dispatch(login());
           navigate("/", { state: { name: "Home" } });
+          window.location.reload();
         }
       });
   };

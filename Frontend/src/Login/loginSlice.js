@@ -1,20 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
+import cookie from "react-cookies";
 
 const initialState = {
-  authenticated: localStorage.getItem('authenticated'),
+  authenticated: cookie.load("access_token") ? true : false,
 }
 
 export const loginSlice = createSlice({
   name: 'login',
   initialState,
   reducers: {
-    login: (state) => {
-      state.authenticated = true;
-    },
-   
     logout: (state) => {
-      localStorage.setItem('authenticated',false)
-      state.authenticated = false;
+      cookie.remove("access_token");
+      window.location.reload();
     },
   },
 })

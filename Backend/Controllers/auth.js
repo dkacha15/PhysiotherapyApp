@@ -103,6 +103,10 @@ module.exports = {
                 expiresIn: "24h",
               });
 
+              res.cookie("access_token", "bearer " + token, {
+                maxAge: 24 * 60 * 60 * 1000,
+              });
+
               res.json({
                 message: "Login Successful",
                 token,

@@ -10,6 +10,7 @@ const BookAppointment = () => {
     React.useEffect(() => {
         fetch("http://localhost:5000/api/Physiotherapy/getServices", {
             method: "Get",
+            credentials: "include",
         })
             .then((res) => res.json())
             .then((data) => {
