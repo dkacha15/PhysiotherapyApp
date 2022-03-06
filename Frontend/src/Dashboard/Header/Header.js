@@ -28,7 +28,7 @@ const Header = (props) => {
     { name: "Products", type: "menu" },
     { name: "Team", type: "button" },
     { name: "Contact Us", type: "button" },
-    { name: auth ? "Book an Appointment" : "Sign Up", type: "button" },
+    { name: auth ? "Book an Appointment" : "Sign In", type: "button" },
   ];
 
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ const Header = (props) => {
   const handlePageSelection = (name) => {
     if (name === "Book an Appointment") {
       navigate("/bookAppointment");
-    } else if (name === "Sign Up") {
+    } else if (name === "Sign In") {
       navigate("/login");
     } else {
       navigate("/", { state: { name: name } });
