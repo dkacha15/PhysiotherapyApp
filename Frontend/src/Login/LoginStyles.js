@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import image from "../assets/physio.jpeg"
+import image from "../assets/physio.jpeg";
 
 const useStyles = makeStyles((theme) => ({
 

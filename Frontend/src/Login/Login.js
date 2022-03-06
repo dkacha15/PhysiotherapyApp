@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, TextField, Button, Container, Typography, Grid, Link, Paper, FormControl, OutlinedInput, InputLabel, InputAdornment, IconButton } from "@material-ui/core";
+import { Box, TextField, Button, Container, Typography, Grid, Link, Paper, InputAdornment, IconButton } from "@material-ui/core";
 import * as Icons from "@material-ui/icons";
 import { useStyles } from "./LoginStyles";
 import logo from "../assets/logo.jpeg";
@@ -64,9 +64,9 @@ const Login = () => {
                 alt="logo"
                 src={logo}
               />
-              <Typography variant="h6" align="center">
-                Sign in
-              </Typography>
+              {/* <Typography variant="h6" align="center">
+                Sign In
+              </Typography> */}
             </Box>
             <Box component="form" onSubmit={loginAPI} sx={{ mt: 1 }}>
                 <TextField
@@ -125,7 +125,7 @@ const Login = () => {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/signup" variant="body2">
+                  <Link onClick={()=>navigate("/signup")} variant="body2" style={{cursor:"pointer"}}>
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

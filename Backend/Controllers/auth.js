@@ -16,7 +16,7 @@ module.exports = {
     })
       .then((patient) => {
         if (patient) {
-          return res.json({ error: "Email already used" });
+          return res.json({ error: "Email already used. Try again." });
         }
         bcrypt
           .hash(password, 6)
