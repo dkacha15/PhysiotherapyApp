@@ -2,6 +2,7 @@ import * as React from 'react';
 import {useNavigate} from 'react-router-dom';
 import { Box, TextField, Button, Paper, Container, Typography, Grid, Link, InputAdornment, IconButton } from '@material-ui/core';
 import * as Icons from '@material-ui/icons';
+import PasswordStrengthBar from 'react-password-strength-bar';
 import { useStyles } from './SignUpStyles';
 import logo from "../assets/logo.jpeg";
 
@@ -144,12 +145,13 @@ const SignUp = () => {
                                                 onClick={handleClickShowPassword}
                                                 edge="end"
                                             >
-                                                {values.showPassword ? <Icons.Visibility/> : <Icons.VisibilityOff/>}
+                                                {values.showPassword ? <Icons.VisibilityOff/> : <Icons.Visibility/>}
                                             </IconButton>
                                         </InputAdornment>
                                     )
                                 }}
                             />
+                            {values.password ? <PasswordStrengthBar password={values.password}/> : <Box></Box>}
                             <TextField
                                 variant="outlined"
                                 margin="normal"
