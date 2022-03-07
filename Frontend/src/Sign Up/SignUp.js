@@ -145,7 +145,7 @@ const SignUp = () => {
                                                 onClick={handleClickShowPassword}
                                                 edge="end"
                                             >
-                                                {values.showPassword ? <Icons.VisibilityOff/> : <Icons.Visibility/>}
+                                                {values.showPassword ? <Icons.Visibility/> : <Icons.VisibilityOff/>}
                                             </IconButton>
                                         </InputAdornment>
                                     )
