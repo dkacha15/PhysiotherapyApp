@@ -19,7 +19,30 @@ const useStyles = makeStyles((theme) => ({
 
     time: {
         color:"gray",
-    }
+    },
+
+    cardContainer: {
+        paddingLeft: "40px",
+        paddingRight: "40px",
+        marginTop: "10px",
+        marginBottom: "10px",
+    },
+
+    cardItem: {
+        paddingLeft:"10px",
+        marginTop:"10px",
+    },
+
+    doctorImage: {
+        height: 150,
+        width: 150,
+        marginTop: 10
+    },
+
+    serviceButton: {
+        marginRight: 10,
+        marginBottom: 10
+    },
 }));
 
 export { useStyles };

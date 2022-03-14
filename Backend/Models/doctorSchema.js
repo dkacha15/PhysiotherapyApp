@@ -9,6 +9,11 @@ const doctorSchema = new mongoose.Schema({
         day: { type: String },
         timeRange: { type: String }
     }],
+    services: [
+        {
+            service_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Service' }
+        }
+    ]
 });
 
 module.exports=mongoose.model("Doctor",doctorSchema);

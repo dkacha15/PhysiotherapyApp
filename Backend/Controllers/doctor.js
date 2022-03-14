@@ -6,7 +6,7 @@ module.exports = {
   async getDoctors(req, res) {
     const doctors = await Doctor.find({}, {
       name:1,
-    });
+    }).populate("services.service_id", "name");
     return res.json(doctors);
   },
 
@@ -24,4 +24,28 @@ module.exports = {
       console.log(err);
     })
   },
+
+  async addService(req, res) {
+    const { service_id, doctor_id } = req.body;
+
+    await Doctor.findByIdAndUpdate(
+      doctor_id,
+      {
+        $push: {
+          services: {
+            service_id:service_id
+          },
+        },
+      },
+      {
+        new:true,
+      }
+    ).exec((err, result) => {
+      if (err) {
+        return res.json({ error: "Failed to add service" });
+      } else {
+        return res.json({ result, message: "Service added successfully" });
+      }
+    })
+  }
 };
