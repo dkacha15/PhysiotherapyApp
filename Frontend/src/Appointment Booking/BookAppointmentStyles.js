@@ -12,6 +12,10 @@ const useStyles = makeStyles((theme) => ({
         padding:"3em"
     },
 
+    confirmDialog: {
+        padding:"10px",
+    },
+
     date: {
         fontSize: "larger",
         fontWeight:700

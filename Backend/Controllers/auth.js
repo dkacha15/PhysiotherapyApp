@@ -1,8 +1,41 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const nodemailer = require('nodemailer');
 const Patient = require("../models/patientSchema");
 const Doctor = require("../Models/doctorSchema");
-const { JWT_SECRET } = require("../config/keys");
+const { JWT_SECRET, EMAIL, PASSWORD } = require("../config/keys");
+const hbs = require("nodemailer-express-handlebars");
+const path = require('path');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: EMAIL,
+    pass: PASSWORD
+  }
+});
+
+const handlebarsOptions = {
+  viewEngine: {
+    extName: ".handlebars",
+    partialsDir: path.resolve('./Views'),
+    defaultLayout: false
+  },
+  viewPath: path.resolve("./Views"),
+  extName: ".handlebars"
+}
+
+transporter.use('compile', hbs(handlebarsOptions));
+
+var mailOption = {
+  from: "noreply.dhruv@gmail.com",
+  to: "dhruvkacha15@gmail.com",
+  subject: "Sending Email using NodeJS",
+  template: 'test',
+  context: {
+    title: "Title here"
+  }
+};
 
 module.exports = {
   async createPatient(req, res) {
@@ -99,6 +132,15 @@ module.exports = {
           .compare(password, patient.password)
           .then((doMatch) => {
             if (doMatch) {
+
+              // transporter.sendMail(mailOption, function (err, info) {
+              //   if (err) {
+              //     console.log(err);
+              //   } else {
+              //     console.log("Email sent!!");
+              //   }
+              // })
+
               const token = jwt.sign({ _id: patient._id }, JWT_SECRET, {
                 expiresIn: "24h",
               });

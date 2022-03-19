@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import { Box,Typography } from "@material-ui/core";
+import PropTypes from 'prop-types';
+import { Box, Typography, Dialog, DialogTitle, Button, Grid } from "@material-ui/core";
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -19,6 +20,8 @@ const DoctorAppointment = () => {
     const calendarRef = React.createRef();
     let eventId = 0;
     const { doctor_id, service_id } = useParams();
+    const [openDialog1, setOpenDialog1] = React.useState(false);
+    const [openDialog2, setOpenDialog2] = React.useState(false);
     const [serviceName, setServiceName] = React.useState();
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [open, setOpen] = React.useState(false);
@@ -28,6 +31,7 @@ const DoctorAppointment = () => {
     const [doctorName, setDoctorName] = React.useState();
     const [bookedAppointments, setbookedAppointments] = React.useState([]);
     const [firstDate, setFirstDate] = React.useState(new Date());
+    const [eventInfo, setEventInfo] = React.useState();
     const [schedule, setSchedule] = React.useState([
         {
             day: "Sunday",
@@ -296,13 +300,82 @@ const DoctorAppointment = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                alert(data.message);
+                // alert(data.message);
+                setOpenDialog2(true);
             });
     }
 
     const handleEventClick = (eventInfo) => {
-        setbookedAppointments(oldArray => [...oldArray, eventInfo.event.start]);
-        bookAppointment(eventInfo.event.start);
+        setOpenDialog1(true);
+        setEventInfo(eventInfo);
+        // setbookedAppointments(oldArray => [...oldArray, eventInfo.event.start]);
+        // bookAppointment(eventInfo.event.start);
+    };
+
+    const Dialog1 = (props) => {
+        const { open } = props;
+        const classes = useStyles();
+
+        return (
+            <Dialog open={open}>
+                <DialogTitle>Do you want to confirm this appointment?</DialogTitle>
+                <Grid className={classes.confirmDialog} container justifyContent="center">
+                    <Button
+                        color="primary"
+                        variant="contained"
+                        onClick={() => {
+                            setbookedAppointments(oldArray => [...oldArray, eventInfo.event.start]);
+                            bookAppointment(eventInfo.event.start);
+                            setOpenDialog1(false);
+                        }}
+                    >
+                        Yes
+                    </Button>
+                    <Button
+                        style={{
+                            marginLeft: "10px"
+                        }}
+                        color="primary"
+                        variant="contained"
+                        onClick={() => {
+                            setOpenDialog1(false);
+                        }}
+                    >
+                        No
+                    </Button>
+                </Grid>
+            </Dialog>
+        )
+    };
+
+    Dialog1.propTypes = {
+        open: PropTypes.bool.isRequired,
+    };
+
+    const Dialog2 = (props) => {
+        const { open } = props;
+        const classes = useStyles();
+
+        return (
+            <Dialog open={open}>
+                <DialogTitle>Appointment confirmed. Please check your email for more information.</DialogTitle>
+                <Grid className={classes.confirmDialog} container justifyContent="center">
+                    <Button
+                        color="primary"
+                        variant="contained"
+                        onClick={() => {
+                            setOpenDialog2(false);
+                        }}
+                    >
+                        Okay
+                    </Button>
+                </Grid>
+            </Dialog>
+        );
+    };
+
+    Dialog2.propTypes = {
+        open: PropTypes.bool.isRequired,
     };
     
     return (
@@ -370,6 +443,12 @@ const DoctorAppointment = () => {
                     <DatePicker cancelLabel='' open={open} value={selectedDate} onChange={handleDateChange} disablePast/>
                 </MuiPickersUtilsProvider>
             </Box>
+            <Dialog1
+                open={openDialog1}
+            />
+            <Dialog2
+                open={openDialog2}
+            />
         </Box>
     )
 };
