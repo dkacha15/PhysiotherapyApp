@@ -120,7 +120,7 @@ const Login = () => {
               </Box>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  <Link onClick={()=>navigate("/forgotPassword")} variant="body2" style={{cursor:"pointer"}}>
                     Forgot password?
                   </Link>
                 </Grid>
