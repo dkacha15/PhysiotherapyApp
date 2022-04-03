@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
   btnText: { fontWeight: "bold", color: "#ffffff", fontSize: 18 },
   divider: { color: "#888888", margin: 10, marginLeft: 5 },
   imageBox1: {
-    flex: 0.5,
     alignSelf: "flex-start",
     marginRight: 40,
     marginBottom: 30,
@@ -62,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     flexDirection: "row",
     display: "flex",
+    marginTop: 15,
   },
   points: {
     alignSelf: "flex-end",
@@ -99,6 +99,12 @@ const useStyles = makeStyles((theme) => ({
     color: "#888888",
     alignSelf: "center",
     marginLeft: 5,
+  },
+  btn: {
+    margin: "4%",
+    marginTop: 20,
+    backgroundColor: "#0968e8",
+    width: "90%",
   },
 }));
 

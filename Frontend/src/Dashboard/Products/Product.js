@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link, Box, Button, Divider, Typography } from "@material-ui/core";
 import { Products } from "./ProductList";
 import { useStyles } from "./ProductStyles";
@@ -7,6 +7,7 @@ import * as Icons from "@material-ui/icons";
 
 const Product = (props) => {
   const classes = useStyles();
+  const navigate = useNavigate();
   const productIndex = Products.findIndex(
     (product) => product.name === props.product.name
   );
@@ -74,28 +75,14 @@ const Product = (props) => {
           <Divider className={classes.divider} />
           <Button
             variant="contained"
-            style={{
-              margin: "4%",
-              marginTop: 20,
-              backgroundColor: "#0968e8",
-              width: "90%",
-            }}
-            //   onClick={() => navigate("/bookAppointment")}
+            className={classes.btn}
+            onClick={() => navigate("/bookAppointment")}
           >
             <Typography className={classes.btnText}>
               Book Appointment
             </Typography>
           </Button>
         </Box>
-        {/* <Box className={classes.contentBox1}>
-        <Typography className={classes.title}>Our Products</Typography>
-        <Typography className={classes.content}>
-          {service.Card1.para1}
-        </Typography>
-        <Typography className={classes.content}>
-          {service.Card1.para2}
-        </Typography>
-      </Box> */}
       </Box>
     </Box>
   );

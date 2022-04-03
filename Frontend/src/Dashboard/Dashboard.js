@@ -4,13 +4,11 @@ import { useLocation } from "react-router-dom";
 import { Box } from "@material-ui/core";
 import Header from "./Header/Header";
 import Home from "./Home/Home";
-// import { useSelector, useDispatch } from "react-redux";
-
 import Footer from "./Footer/Footer";
 import Aboutus from "./AboutUs/Aboutus";
 import Service from "./Services/Service";
 import Product from "./Products/Product";
-
+import Contactus from "./ContactUs/Contactus";
 const Dashboard = (props) => {
   const [products, setProducts] = useState([]);
   const [services, setServices] = useState([]);
@@ -68,6 +66,7 @@ const Dashboard = (props) => {
       {page === "About Us" && <Aboutus />}
       {page === "Services" && <Service service={service} />}
       {page === "Products" && <Product product={product} />}
+      {page === "Contact Us" && <Contactus />}
       <Footer />
     </Box>
   );
