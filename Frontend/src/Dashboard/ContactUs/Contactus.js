@@ -14,128 +14,29 @@ const Contactus = () => {
   return (
     <Box className={classes.mainContainer}>
       <Box className={classes.contactBox}>
-        <Box
-          style={{
-            flex: 0.5,
-            margin: 20,
-            backgroundColor: "#3482FD",
-            padding: 30,
-            borderRadius: 15,
-          }}
-        >
-          <Typography
-            style={{
-              color: "#ffffff",
-              fontWeight: "bold",
-              fontSize: 18,
-              textAlign: "center",
-            }}
-          >
-            Phone Number
-          </Typography>
-          <Typography
-            style={{
-              color: "#ffffff",
-              fontWeight: "bold",
-              fontSize: 16,
-              textAlign: "center",
-            }}
-          >
-            437-981-0060
-          </Typography>
+        <Box className={classes.outerbox}>
+          <Typography className={classes.heading}>Phone Number</Typography>
+          <Typography className={classes.info}>437-981-0060</Typography>
         </Box>
-        <Box
-          style={{
-            flex: 0.5,
-            margin: 20,
-            backgroundColor: "#3482FD",
-            padding: 30,
-            borderRadius: 15,
-          }}
-        >
-          <Typography
-            style={{
-              color: "#ffffff",
-              fontWeight: "bold",
-              fontSize: 18,
-              textAlign: "center",
-            }}
-          >
-            Mail
-          </Typography>
-          <Typography
-            style={{
-              color: "#ffffff",
-              fontWeight: "bold",
-              fontSize: 16,
-              textAlign: "center",
-            }}
-          >
+        <Box className={classes.outerbox}>
+          <Typography className={classes.heading}>Mail</Typography>
+          <Typography className={classes.info}>
             brindahadvani0@gmail.com
           </Typography>
         </Box>
-        <Box
-          style={{
-            flex: 0.5,
-            margin: 20,
-            backgroundColor: "#3482FD",
-            padding: 30,
-            borderRadius: 15,
-          }}
-        >
-          <Typography
-            style={{
-              color: "#ffffff",
-              fontWeight: "bold",
-              fontSize: 18,
-              textAlign: "center",
-            }}
-          >
-            Address
-          </Typography>
-          <Typography
-            style={{
-              color: "#ffffff",
-              fontWeight: "bold",
-              fontSize: 16,
-              textAlign: "center",
-            }}
-          >
+        <Box className={classes.outerbox}>
+          <Typography className={classes.heading}>Address</Typography>
+          <Typography className={classes.info}>
             40 Memory Lane, Brampton - L7A0V9, Ontario
           </Typography>
         </Box>
       </Box>
-      <Box
-        style={{
-          flex: 1,
-          flexDirection: "row",
-          display: "flex",
-          flexWrap: "wrap",
-        }}
-      >
-        <Box style={{ flex: 0.35 }}></Box>
-        <Box
-          style={{
-            flex: 0.5,
-            justifyContent: "center",
-            alignSelf: "center",
-          }}
-        >
-          <Box
-            style={{
-              flex: 1,
-              alignSelf: "center",
-              margin: 20,
-              alignContent: "center",
-              flexDirection: "row",
-              flexWrap: "flex",
-            }}
-          >
+      <Box className={classes.formContainer}>
+        <Box className={classes.emptyFlex}></Box>
+        <Box className={classes.formFlex}>
+          <Box className={classes.contentBox}>
             <Box
-              style={{
-                flex: 0.5,
-                marginBottom: 20,
-              }}
+              className={classes.textBox}
               sx={{
                 "& > :not(style)": { m: 1, width: "35ch" },
               }}
@@ -149,10 +50,7 @@ const Contactus = () => {
               />
             </Box>
             <Box
-              style={{
-                flex: 0.5,
-                marginBottom: 20,
-              }}
+              className={classes.textBox}
               sx={{
                 "& > :not(style)": { m: 1, width: "35ch" },
               }}
@@ -166,10 +64,7 @@ const Contactus = () => {
               />
             </Box>
             <Box
-              style={{
-                flex: 0.5,
-                marginBottom: 20,
-              }}
+              className={classes.textBox}
               sx={{
                 "& > :not(style)": { m: 1, width: "35ch" },
               }}
@@ -183,10 +78,7 @@ const Contactus = () => {
               />
             </Box>
             <Box
-              style={{
-                flex: 0.5,
-                marginBottom: 20,
-              }}
+              className={classes.textBox}
               sx={{
                 "& > :not(style)": { m: 1, width: "35ch" },
               }}
@@ -201,13 +93,7 @@ const Contactus = () => {
                 onChange={(e) => setMessage(e.target.value)}
               />
             </Box>
-            <Box
-              style={{
-                textAlign: "left",
-                paddingTop: 20,
-                paddingBottom: 20,
-              }}
-            >
+            <Box className={classes.submit}>
               <Button variant="contained" className={classes.btn}>
                 Submit
               </Button>

@@ -96,7 +96,7 @@ const DoctorAppointment = () => {
                 setDoctorName(data.result.name);
                 setSchedule(data.result.schedule);
             });
-    }, []);
+    });
 
     React.useEffect(() => {
         setCalendarTimeRange();
@@ -268,7 +268,7 @@ const DoctorAppointment = () => {
 
     const changeFirstDate = (args) => {
         var date = args.view.activeStart;
-        if (firstDate.getDate() != date.getDate()) {
+        if (firstDate.getDate() !== date.getDate()) {
             setFirstDate(date);
         }
     }
