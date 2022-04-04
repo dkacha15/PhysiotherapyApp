@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#ffffff",
     flexDirection: "column",
     display: "flex",
+    marginTop: 20,
   },
   flex1: {
     flex: 0.5,
@@ -13,6 +14,8 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     display: "flex",
     margin: 20,
+    paddingTop: 0,
+    padding: 20,
   },
   imageBox1: {
     flex: 0.1,
@@ -42,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     flexWrap: "wrap",
     display: "flex",
-    padding: 20,
+    padding: 40,
     backgroundColor: "#F7F6F6",
   },
   imageBox2: {

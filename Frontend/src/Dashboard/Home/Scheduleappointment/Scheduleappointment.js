@@ -9,7 +9,7 @@ const Scheduleappointment = () => {
       <Typography className={classes.title}>Schedule A Consultation</Typography>
       <Box className={classes.btnBox}>
         <Button variant="contained" className={classes.btn}>
-          Book A Appointment
+          Book An Appointment
         </Button>
       </Box>
     </Box>

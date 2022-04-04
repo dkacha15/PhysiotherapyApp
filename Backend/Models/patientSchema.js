@@ -7,6 +7,8 @@ const patientSchema = new mongoose.Schema({
   password: { type: String },
   address: { type: String },
   dob: { type: Date },
+  resetPasswordToken: { type: String },
+  expirePasswordToken: { type: Date },
 });
 
 module.exports = mongoose.model("Patient", patientSchema);
