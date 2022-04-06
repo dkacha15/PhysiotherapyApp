@@ -96,7 +96,7 @@ const DoctorAppointment = () => {
                 setDoctorName(data.result.name);
                 setSchedule(data.result.schedule);
             });
-    });
+    }, []);
 
     React.useEffect(() => {
         setCalendarTimeRange();
