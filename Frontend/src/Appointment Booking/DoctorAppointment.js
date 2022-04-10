@@ -160,6 +160,20 @@ const DoctorAppointment = () => {
         }
     }
 
+    const todaysTimeSlots = (date) => {
+        var today = new Date();
+        if (date) {
+            if (date.getDate() === today.getDate()
+                && date.getMonth() === today.getMonth()
+                && date.getHours()-1 <= today.getHours())
+            {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
     const createAppointments = () => {
         events.splice(0, events.length);
         var lastDay = new Date(firstDate);
@@ -244,7 +258,7 @@ const DoctorAppointment = () => {
             }
   
             do {
-                if (!findDateInArray(dayStart,bookedAppointments)) {
+                if (!findDateInArray(dayStart, bookedAppointments) && !todaysTimeSlots(dayStart)) {
                     timeSlots.push(new Date(dayStart));
                 }
                 dayStart.setHours(dayStart.getHours(), dayStart.getMinutes() + 30)
